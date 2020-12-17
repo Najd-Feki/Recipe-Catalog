@@ -1,0 +1,42 @@
+ <div class="row">
+    <div class="col-lg-6">
+      <div class="input-group ">
+        <div class="input-group-btn " appDropdown>
+          <button type="button" class="btn btn-warning dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">{{searchAttribute}} <span class="caret"></span></button>
+          <ul class="dropdown-menu multi-level">
+            <li style="color: gray;"> &nbsp; Recipe</li>
+            <li><a href="javascript:void(0);" (click)="setSearchAttribute('Recipe Name')">Recipe's name</a></li>
+            <li><a href="javascript:void(0);"(click)="setSearchAttribute('Cuisine')">Cuisine</a></li>
+            <li><a href="javascript:void(0);"(click)="setSearchAttribute('Ingredients')">Ingredients</a></li>
+            <li role="separator" class="divider"></li>
+            <li style="color: gray;"> &nbsp; Ingredients</li>
+            <li><a href="javascript:void(0);" (click)="setSearchAttribute('Ingredient Name')">Ingredient's name</a></li>
+            <li role="separator" class="divider"></li>            
+            <li style="color: gray;"> &nbsp; Healthy recipes</li>
+            <li><a href="javascript:void(0);"(click)="setSearchAttribute('Max Carbs')">Max Carbs</a></li>
+            <li><a href="javascript:void(0);"(click)="setSearchAttribute('Min Carbs')">Min Carbs</a></li>
+            <li><a href="javascript:void(0);"(click)="setSearchAttribute('Max Protein')">Max Protein</a></li>
+            <li><a href="javascript:void(0);"(click)="setSearchAttribute('Min Protein')">Min Protein</a></li>
+            <li><a href="javascript:void(0);"(click)="setSearchAttribute('Max Calories')">Max Calories</a></li>
+            <li><a href="javascript:void(0);"(click)="setSearchAttribute('Min Calories')">Min Calories</a></li>
+            <li role="separator" class="divider"></li>
+          </ul>
+          
+        </div><!-- /btn-group -->
+        <div >
+        <input type="text" class="form-control" aria-label="..." style="width: 300px;" [(ngModel)]="searchText">
+      </div>
+        <span class="input-group-btn">
+          <button class="btn btn-warning" type="button" (click)="Search()">Go!</button>
+        </span>
+      </div><!-- /input-group -->
+      <br>  
+     <p *ngIf="favouriteItem!=null" style="font-size: larger; font-weight: bold; text-align: center;" class="label label-info"> &nbsp;&nbsp;&nbsp; {{favouriteItem.title}} added to favourites</p>
+ </div>
+ </div>
+ <hr>
+<div class="row">
+    <div class="col-xs-12 ">
+        <app-api-recipes-item *ngFor="let recipe of recipes" [recipe]="recipe" [i]="recipe.id" (item)="getFav($event)" ></app-api-recipes-item>
+    </div>
+</div>  

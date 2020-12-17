@@ -1,0 +1,29 @@
+<div class="row">
+    <div class="col-lg-6">
+      <div class="input-group ">
+        <div class="input-group-btn " appDropdown>
+          <button type="button" class="btn btn-warning dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"><span class="glyphicon glyphicon-search"></span>{{searchAttribute}} <span class="caret"></span></button>
+          <ul class="dropdown-menu multi-level">
+            <li style="color: gray;"> &nbsp; Recipe</li>
+            <li><a href="javascript:void(0);" (click)="setSearchAttribute('Recipe Name')">Recipe's name</a></li>
+            <li><a href="javascript:void(0);"(click)="setSearchAttribute('Recipe description')">Recipe's description</a></li>
+          </ul>
+          
+        </div><!-- /btn-group -->
+        <div >
+        <input type="text" class="form-control" aria-label="..." style="width: 200px;" [(ngModel)]="searchText">
+      </div>
+      </div><!-- /input-group -->
+      </div>
+</div>
+<div class="row">
+    <div class="col-lg-6">
+        <button [disabled]="!this.auth.isAuthenticated()" [routerLink]="['new']" type="button" class="btn btn-danger "><span class="glyphicon glyphicon-plus ; "></span> New Recipe  </button>
+    </div>
+  </div>
+<hr style="height:2px;">
+<div class="row">
+    <div class="col-xs-12 ">
+        <app-recipe-item *ngFor="let recipe of recipes |search : searchText let i = index " [recipe]="recipe" [i]="i"></app-recipe-item>
+    </div>
+</div>

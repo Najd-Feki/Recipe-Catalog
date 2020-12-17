@@ -1,0 +1,14 @@
+<a id="list" routerLinkActive="active-link" [routerLink]="[i]" class="list-group-item clearfix margin" style="cursor: pointer">
+  <div class="media">
+    <div class="media-left media-middle ">
+      <img [src]="recipe.image" alt="" class="media-object">
+    </div>
+    <div class="media-body">
+      <h4 class="media-heading ">{{recipe.title}}  </h4>
+        <button [ngClass]="favourite ? 'btn btn-info btn-xs':'btn btn-warning btn-xs'" (click)="addToFav()"> <i  [ngClass]="favourite ? 'glyphicon glyphicon-star' : 'glyphicon glyphicon-star-empty'" > </i></button>
+      
+      
+      <p class="textBody hidden-xs" >{{recipe.description}}</p> 
+    </div>
+  </div>
+</a> 
